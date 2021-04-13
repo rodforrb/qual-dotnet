@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ben\source\repos\qual\qual\obj\Debug\
+C:\Users\ben\Source\Repos\qual-dotnet\qual\obj\Debug\
 qual
 none
 false
 DEBUG;TRACE
-C:\Users\ben\source\repos\qual\qual\App.xaml
+C:\Users\ben\Source\Repos\qual-dotnet\qual\App.xaml
 3-1376653254
 
 10-1982797967
-14-1551304006
+119951760357
 MainWindow.xaml;qualDisplay.xaml;qualHome.xaml;
 
-False
+True
 

@@ -35,8 +35,7 @@ namespace qual
         private void LoadWorksheet()
         {
             /* Update parser with a given qualification sheet */
-            worksheet ws = Workbook.Worksheets(fileSource).ElementAt(0);
-            parser.ParseSheet(ws);
+            parser.ParseSheet(fileSource);
         }
 
         private void LoadEmails()

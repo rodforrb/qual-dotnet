@@ -1,5 +1,6 @@
 ﻿using System;
 using Excel;
+using IronXL;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,14 +17,34 @@ namespace qual
         Dictionary<String, Employee> empSaved;  // employees from save file
         List<Employee> expiring;                // list of expiring employees
         Dictionary<String, String> emailByID;   // dict <ID, email> of emails for employees
-        string saveFile = "QualReport.xlsx";
+        string newReportSrc = null;
+        string saveFileSrc = "QualReport.xlsx";
 
         // parse data from a given exported qualification sheet
-        public void ParseSheet(worksheet ws)
+        public void ParseSheet(String fileSource)
         {
+            if (fileSource != null)
+            {
+                if (System.IO.File.Exists(saveFileSrc))
+                {
+                    newReportSrc = fileSource;
+                }
+                else
+                {
+                    // file not found
+                    return;
+                }
+            }
+            else
+            {
+                // no file given
+                return;
+            }
+            worksheet ws = Workbook.Worksheets(fileSource).ElementAt(0);
+
             employees = new Dictionary<String, Employee>();
             expiring = new List<Employee>();
-            Cell[] row;
+            Excel.Cell[] row;
             String id;
             Employee emp;
             int[] dmy;
@@ -77,10 +98,10 @@ namespace qual
         public void ParseSaved()
         {
             worksheet ws;
-            if (System.IO.File.Exists(saveFile))
+            if (System.IO.File.Exists(saveFileSrc))
             {
                 // open sheet 1
-                ws = Workbook.Worksheets(saveFile).ElementAt(0);
+                ws = Workbook.Worksheets(saveFileSrc).ElementAt(0);
             }
             else
             {
@@ -90,7 +111,7 @@ namespace qual
             
             // repeat parsing for saved spreadsheet
 
-            Cell[] row;
+            Excel.Cell[] row;
             String id;
             Employee emp;
             int[] dmy, emailed;
@@ -140,14 +161,15 @@ namespace qual
                 {
                     emp.Expiring = true;
                 }
+                Console.WriteLine(cert);
             }
         }
 
         public void SaveData()
         {
-            using (StreamWriter writer = new StreamWriter(saveFile, true))
+            using (StreamWriter writer = new StreamWriter(saveFileSrc, true))
             {
-
+                WorkBook newReport = WorkBook.Load(newReportSrc);
 
 
             }

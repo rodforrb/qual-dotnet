@@ -40,3 +40,4 @@ C:\Users\ben\Source\Repos\qual-dotnet\qual\obj\Debug\qual.csproj.CoreCompileInpu
 C:\Users\ben\Source\Repos\qual-dotnet\qual\obj\Debug\qual.csproj.CopyComplete
 C:\Users\ben\Source\Repos\qual-dotnet\qual\obj\Debug\qual.exe
 C:\Users\ben\Source\Repos\qual-dotnet\qual\obj\Debug\qual.pdb
+C:\Users\ben\Source\Repos\qual-dotnet\qual\bin\Debug\IronXL.dll
